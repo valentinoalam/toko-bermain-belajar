@@ -1,4 +1,4 @@
-'use client';
+"use client"
 import { Game } from '@/components/game/advance/Game';
 import React, { useEffect, useRef } from 'react';
 
