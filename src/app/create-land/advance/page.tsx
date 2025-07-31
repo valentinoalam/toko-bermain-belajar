@@ -2,14 +2,19 @@
 import { Game } from '@/components/game/advance/Game';
 import React, { useEffect, useRef } from 'react';
 
-
 function App() {
   const gameRef = useRef<HTMLDivElement>(null);
   const gameInstanceRef = useRef<Game | null>(null);
 
   useEffect(() => {
+    if (gameInstanceRef.current) return
+
     if (gameRef.current && !gameInstanceRef.current) {
-      gameInstanceRef.current = new Game(gameRef.current.id);
+      async function loadGame() {
+        const { Game } = await import('@/components/game/advance/Game');
+        gameInstanceRef.current = new Game(gameRef.current!.id);
+      }
+      loadGame()
     }
 
     return () => {
