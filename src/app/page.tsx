@@ -1,3 +1,4 @@
+import GameCreateLand from "@/components/sections/game-create-land";
 import SocialShareSidebar from "@/components/social-share-sidebar";
 
 export default function Page() {
@@ -71,6 +72,7 @@ export default function Page() {
         </div>
       </div>
       <SocialShareSidebar />
+      <GameCreateLand />
       <h2 className="text-[#131810] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Benefits</h2>
       <div className="flex flex-col gap-10 px-4 py-10 @container">
         <div className="flex flex-col gap-4">
