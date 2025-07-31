@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Header = () => {
@@ -16,11 +17,11 @@ const Header = () => {
       </div>
       <div className="flex flex-1 justify-end gap-8">
         <div className="flex items-center gap-9">
-          <a className="text-[#131810] text-sm font-medium leading-normal" href="#">Home</a>
-          <a className="text-[#131810] text-sm font-medium leading-normal" href="#">Products</a>
-          <a className="text-[#131810] text-sm font-medium leading-normal" href="#">Tutorial</a>
-          <a className="text-[#131810] text-sm font-medium leading-normal" href="#">About</a>
-          <a className="text-[#131810] text-sm font-medium leading-normal" href="#">Contact</a>
+          <Link className="text-[#131810] text-sm font-medium leading-normal" href="/">Home</Link>
+          <Link className="text-[#131810] text-sm font-medium leading-normal" href="/#products">Products</Link>
+          <Link className="text-[#131810] text-sm font-medium leading-normal" href="/#tutorial">Tutorial</Link>
+          <Link className="text-[#131810] text-sm font-medium leading-normal" href="/#about">About</Link>
+          <Link className="text-[#131810] text-sm font-medium leading-normal" href="/#contact">Contact</Link>
         </div>
         <div className="flex gap-0">
           <button
