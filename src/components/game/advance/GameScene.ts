@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as Phaser from 'phaser';
 import { GameConfig } from './GameConfig';
 import { TerrainManager } from './TerrainManager';
@@ -5,7 +6,7 @@ import { IsometricRenderer } from './IsometricRenderer';
 
 export class GameScene extends Phaser.Scene {
   private terrainManager!: TerrainManager;
-  private renderer!: IsometricRenderer;
+  private isometricRenderer!: IsometricRenderer;
   private currentTool: string = 'grass';
   private currentMode: 'terrain' | 'object' = 'terrain';
   private cameraAngle: number = 0;
@@ -19,10 +20,10 @@ export class GameScene extends Phaser.Scene {
   create(): void {
     // Initialize managers
     this.terrainManager = new TerrainManager(this);
-    this.renderer = new IsometricRenderer(this, this.terrainManager);
+    this.isometricRenderer = new IsometricRenderer(this, this.terrainManager);
     
     // Center the view
-    this.renderer.setPosition(this.cameras.main.centerX, this.cameras.main.centerY - 50);
+    this.isometricRenderer.setPosition(this.cameras.main.centerX, this.cameras.main.centerY - 50);
     
     // Setup input
     this.input.on('pointerdown', this.onPointerDown, this);
@@ -142,8 +143,8 @@ export class GameScene extends Phaser.Scene {
       const deltaX = pointer.x - this.lastPointer.x;
       const deltaY = pointer.y - this.lastPointer.y;
       
-      const container = this.renderer.getContainer();
-      this.renderer.setPosition(
+      const container = this.isometricRenderer.getContainer();
+      this.isometricRenderer.setPosition(
         container.x + deltaX,
         container.y + deltaY
       );
@@ -158,7 +159,7 @@ export class GameScene extends Phaser.Scene {
   
   private handleTileInteraction(pointer: Phaser.Input.Pointer): void {
     // Convert screen coordinates to world coordinates
-    const container = this.renderer.getContainer();
+    const container = this.isometricRenderer.getContainer();
     const worldX = pointer.x - container.x;
     const worldY = pointer.y - container.y;
     
@@ -171,14 +172,14 @@ export class GameScene extends Phaser.Scene {
       this.terrainManager.setTileObject(x, y, this.currentTool);
     }
     
-    this.renderer.updateTileAt(x, y);
+    this.isometricRenderer.updateTileAt(x, y);
   }
   
   private rotateCamera(angle: number): void {
     this.cameraAngle += angle;
     
     this.tweens.add({
-      targets: this.renderer.getContainer(),
+      targets: this.isometricRenderer.getContainer(),
       rotation: this.cameraAngle,
       duration: 300,
       ease: 'Power2'

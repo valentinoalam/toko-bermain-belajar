@@ -1,7 +1,6 @@
 import * as Phaser from 'phaser';
 import { GameConfig } from './GameConfig';
-import { TerrainManager } from './TerrainManager';
-
+import { TerrainManager, TerrainTile } from './TerrainManager';
 export class IsometricRenderer {
   private scene: Phaser.Scene;
   private terrainManager: TerrainManager;
@@ -54,7 +53,7 @@ export class IsometricRenderer {
     }
   }
   
-  private updateTile(x: number, y: number, tile: any): void {
+  private updateTile(x: number, y: number, tile: TerrainTile): void {
     const { isoX, isoY } = this.terrainManager.getIsometricPosition(x, y);
     const graphics = this.tileGraphics[x][y];
     const objectSprite = this.objectSprites[x][y];
