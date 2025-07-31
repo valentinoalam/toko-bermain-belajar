@@ -1,5 +1,7 @@
+'use client';
+import { Game } from '@/components/game/advance/Game';
 import React, { useEffect, useRef } from 'react';
-import { Game } from './game/Game';
+
 
 function App() {
   const gameRef = useRef<HTMLDivElement>(null);

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import type React from "react"
 
 import { useEffect, useRef, useState, useCallback } from "react"
-import { Card, Button } from "@/components/ui"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 
 const materials = [
   { key: "sand", name: "Sand", color: "#F4E4BC" },
